@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -11,9 +12,12 @@ var PORT string
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", index)
+	fmt.Printf("PORT is %s\n", os.Getenv("PORT"))
+	fmt.Printf("port is %s\n", os.Getenv("port"))
 
+	appPort := fmt.Sprintf(":%s", os.Getenv("PORT"))
 	// Set env var with colon ":80".
-	err := http.ListenAndServe(os.Getenv("PORT"), mux)
+	err := http.ListenAndServe(appPort, mux)
 	log.Fatal(err)
 }
 
