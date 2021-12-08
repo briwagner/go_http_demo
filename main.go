@@ -23,7 +23,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		log.Printf("visitor to %s", r.URL.Path)
 
-		http.Redirect(w, r, "/", http.StatusNotFound)
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 
