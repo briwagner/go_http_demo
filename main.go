@@ -6,14 +6,14 @@ import (
 	"os"
 )
 
-var GOPORT string
+var PORT string
 
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", index)
 
 	// Set env var with colon ":80".
-	err := http.ListenAndServe(os.Getenv("GOPORT"), mux)
+	err := http.ListenAndServe(os.Getenv("PORT"), mux)
 	log.Fatal(err)
 }
 
